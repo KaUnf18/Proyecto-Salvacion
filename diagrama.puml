@@ -1,0 +1,86 @@
+@startuml
+' Definir las clases y sus propiedades/métodos
+
+class Usuario {
+    +int Id
+    +string Nombre
+    +string Correo
+    +string Contraseña
+    +Rol Rol
+
+    +Registrarse(): void
+    +Ingresar(): void
+    +AsignarRol(rol: Rol): void
+}
+
+class Rol {
+    +int Id
+    +string Nombre
+
+    +AsignarPermisos(): void
+}
+
+class Producto {
+    +int Id
+    +string Nombre
+    +string Descripcion
+    +decimal Precio
+    +int Stock
+
+    +ActualizarInventario(): void
+    +ModificarProducto(): void
+}
+
+class Reserva {
+    +int Id
+    +Usuario Usuario
+    +DateTime FechaReserva
+    +DateTime FechaEvento
+    +decimal MontoAdelantado
+    +decimal MontoTotal
+    +string Estado
+
+    +CalcularMonto(): decimal
+    +ConfirmarReserva(): void
+    +CancelarReserva(): void
+}
+
+class Pago {
+    +int Id
+    +Reserva Reserva
+    +decimal MontoPagado
+    +DateTime FechaPago
+    +string MetodoPago
+
+    +RealizarPago(): void
+    +GenerarRecibo(): void
+}
+
+class CarritoDeCompras {
+    +int Id
+    +Usuario Usuario
+    +List<Producto> Productos
+
+    +AgregarProducto(producto: Producto): void
+    +EliminarProducto(producto: Producto): void
+    +CalcularTotal(): decimal
+}
+
+class CorreoNotificacion {
+    +string Destinatario
+    +string Asunto
+    +string Cuerpo
+
+    +EnviarCorreo(): void
+}
+
+' Definir las relaciones entre las clases
+
+Usuario "1" -- "1" Rol : Tiene
+Usuario "1" -- "0..*" Reserva : Realiza
+Reserva "1" -- "1" Pago : Procesa
+Reserva "1" -- "1..*" Producto : Contiene
+CarritoDeCompras "1" -- "1" Usuario : Pertenece a
+CarritoDeCompras "0..*" -- "0..*" Producto : Contiene
+CorreoNotificacion "1" -- "0..*" Reserva : Notifica
+@enduml

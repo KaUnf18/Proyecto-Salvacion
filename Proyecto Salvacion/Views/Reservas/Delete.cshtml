@@ -1,0 +1,16 @@
+﻿@model Reserva
+
+<h2>Eliminar Reserva</h2>
+
+<h3>¿Estás seguro que deseas eliminar esta reserva?</h3>
+<div>
+    <h4>Cliente: @Model.ClienteNombre</h4>
+    <p>Fecha de Reserva: @Model.FechaReserva.ToShortDateString()</p>
+    <p>Pago Adelantado: @Model.PagoAdelantado.ToString("C")</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

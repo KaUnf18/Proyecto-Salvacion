@@ -1,0 +1,16 @@
+﻿@model Proyecto_Salvacion.Models.Rol
+
+
+<h2>Eliminar Rol</h2>
+
+<div class="alert alert-warning">
+    <h4>¿Estás seguro de que deseas eliminar este rol?</h4>
+    <p>Nombre del Rol: <strong>@Model.Nombre</strong></p>
+    <p>Descripción: <strong>@Model.Descripcion</strong></p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

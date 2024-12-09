@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+@{
+    Layout = "_Layout";
+}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow" style="width: 100%; max-width: 400px;">
+        <h2 class="text-center mb-4">Bienvenido a Proyecto Salvacion</h2>
+
+        <form>
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo">
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+            </div>
+
+            <!-- Botones de Registro y Login -->
+            <div class="d-flex justify-content-between">
+                <a href="@Url.Action("Register", "Account")" class="btn btn-outline-primary">Registrarse</a>
+                <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Login", "Account")'">Iniciar Sesión</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+﻿@model Proyecto_Salvacion.Models.Producto
+
+<h2>Editar Producto</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <!-- Los mismos campos que en Create.cshtml -->
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

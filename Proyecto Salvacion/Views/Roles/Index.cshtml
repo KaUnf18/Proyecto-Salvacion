@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Proyecto_Salvacion.Models.Rol>
+
+<h2>Gestión de Roles</h2>
+<a asp-action="Create" class="btn btn-primary mb-3">Agregar Rol</a>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre del Rol</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Descripcion</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
